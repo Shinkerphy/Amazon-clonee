@@ -20,24 +20,24 @@ function Product({ id, title, image, price, rating}) {
     };
 
     return <div className="product">
-        <div className="product_info">
+        <div className="product__info">
         <p>{title}</p>
-        <p className="product_">
+        <p className="product__Price">
             <small>£</small>
             <strong>{price}</strong>
         </p>
-        <div className="product_rating">
+        <div className="product__rating">
             {Array(rating)
                 .fill()
                 .map((_) => (
                      // eslint-disable-next-line 
                     <p>⭐</p> 
                 ))}
-        </div>
-     </div>  
+          </div>
+        </div>  
         <img src={image} alt="" /> 
         <button onClick={addToBasket}>Add to basket</button>    
      </div>
 }
 
-export default Product
+export default Product;

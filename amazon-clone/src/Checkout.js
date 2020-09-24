@@ -3,16 +3,17 @@ import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 import Subtotal from './Subtotal';
 import "./Checkout.css";
+import FlipMove from 'react-flip-move';
 
 function Checkout() {
     // eslint-disable-next-line
-    const [{ basket }] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
 
     return (
       <div className="checkout">
-        <div className="checkout_left" >
-         <img className="checkout_ad" 
-         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-yo_tfwUjXtCFcA1ScYbhYwT8p_EcyN746w&usqp=CAU"
+        <div className="checkout__left" >
+         <img className="checkout__ad" 
+         src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
          alt=""
          />
          {basket?.length === 0  ? (
@@ -24,11 +25,13 @@ function Checkout() {
              </div>
          ) : (
              <div>
-                 <h2 className="checkout_title">Your Shopping Basket</h2>
+                 <h2>Hello, {user?.email}</h2>
 
                  {/* */}
+                 <FlipMove>
                  {basket?.map(item => (
                   <CheckoutProduct
+                     key={item.id}
                      id={item.id}
                      title={item.title}
                      image={item.image}
@@ -36,11 +39,12 @@ function Checkout() {
                      rating={item.rating}
                    />  
                  ))}
+                 </FlipMove>
              </div>   
           )}
           </div>
           {basket.length > 0 && (
-              <div className="checkout_right">
+              <div className="checkout__right">
                   <Subtotal />
               </div>
           )}
@@ -48,4 +52,4 @@ function Checkout() {
      );  
 }
 
-export default Checkout
+export default Checkout;

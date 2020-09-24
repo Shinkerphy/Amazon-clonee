@@ -1,6 +1,8 @@
 import firebase from "firebase";
 
-const firebaseApp = firebase.initializeApp({
+ // eslint-disable-next-line
+
+ const firebaseConfig = ({
         apiKey: "AIzaSyCREyWIuCG4N4-HQM1VcFzAnsXXn6Tgf50",
         authDomain: "clone-160ca.firebaseapp.com",
         databaseURL: "https://clone-160ca.firebaseio.com",
@@ -11,6 +13,9 @@ const firebaseApp = firebase.initializeApp({
         measurementId: "G-V0H4JV9631"
 });
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const db = firebaseApp.firestore();
 const auth = firebase.auth();
 
-export { auth };
+export { db, auth };
